@@ -1,4 +1,4 @@
-import React,{useContext,useState} from "react";
+import React,{useContext,useState,useEffect} from "react";
 import { Button, Card, Elevation } from '@blueprintjs/core';
 import ReactPaginate from "react-paginate";
 import {SettingsContext} from "../../context/contaxt"
@@ -9,10 +9,10 @@ const settings = useContext(SettingsContext)
   const listPerPage = settings.itemsPerPage;
   const pagesVisited = pageNumber * listPerPage;
 
-  const displayList = props.list
-    .slice(pagesVisited, pagesVisited + listPerPage)
-    .map((ele) => {
-      return (
+  const displayList = (settings.showCompleted == 'true' ? props.list : props.incomplete)
+  .slice(pagesVisited, pagesVisited + listPerPage)
+  .map((ele) => {
+    return (
         
         <div key={ele.id} style={{width:"650px" ,margin:"15px"} }>
            <Card interactive={true} elevation={Elevation.TWO} style={{backgroundColor:"#b7b7b7"} }>
@@ -24,13 +24,13 @@ const settings = useContext(SettingsContext)
             <small>Difficulty: {ele.difficulty}</small>
           </p>
          
-          <Button style={{ backgroundColor:"green" }} onClick={() => props.toggleComplete(ele.id)}>
+          <Button style={{ backgroundColor:"#B8DFD8" }} onClick={() => props.toggleComplete(ele.id)}>
           Complete: {ele.complete.toString()}</Button>
 <br/>
 <br/>
 
          
-          <Button style={{ backgroundColor:"red" }} onClick={() => props.deleteItem(ele.id)}>
+          <Button style={{ backgroundColor:"#FFB319" }} onClick={() => props.deleteItem(ele.id)}>
           Delete</Button>
           </Card>
         </div>
@@ -42,9 +42,6 @@ const settings = useContext(SettingsContext)
     };
   return (
     <>
-
-
-    
         {displayList}
         <ReactPaginate
         
