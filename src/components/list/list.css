@@ -11,16 +11,17 @@
     margin: 8px;
     border-radius: 5px;
     border: 1px solid #3f648d;
-    color: #2f6591;
+    color: black;
     cursor: pointer;
   }
   
   .paginationBttns a:hover {
     color: white;
-    background-color: #cb88ce;
+    background-color: #B8DFD8;
   }
   
   .paginationActive a {
-    color: white;
-    background-color: #2bff83;
+    color: black;
+    background-color: #B8DFD8;
   }
+ 

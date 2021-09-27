@@ -3,7 +3,7 @@ import { Card, Button, FormGroup, InputGroup } from '@blueprintjs/core';
 
 export default function Form({ handleSubmit, handleChange }) {
   return (
-    <Card className="mainItem" style={{backgroundColor:"#76c393"}}>
+    <Card className="mainItem" style={{backgroundColor:"#FFE194"}}>
       <h3>Add To Do Item </h3>
       <form onSubmit={handleSubmit}>
         <FormGroup labelFor="text-input" labelInfo="(required)">
