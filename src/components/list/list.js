@@ -2,6 +2,7 @@ import React,{useContext,useState,useEffect} from "react";
 import { Button, Card, Elevation } from '@blueprintjs/core';
 import ReactPaginate from "react-paginate";
 import {SettingsContext} from "../../context/contaxt"
+import Auth from '../login/auth';
 import './list.css'
 function List(props) {
 const settings = useContext(SettingsContext)
@@ -23,15 +24,17 @@ const settings = useContext(SettingsContext)
           <p>
             <small>Difficulty: {ele.difficulty}</small>
           </p>
-         
-          <Button style={{ backgroundColor:"#B8DFD8" }} onClick={() => props.toggleComplete(ele.id)}>
-          Complete: {ele.complete.toString()}</Button>
-<br/>
-<br/>
+          <Auth capability="update">
+              <Button style={{ backgroundColor: "#B8DFD8" }} onClick={() => props.toggleComplete(ele.id)}>
+                Complete: {ele.complete.toString()}</Button>
+            </Auth>
+            <br />
+            <br />
 
-         
-          <Button style={{ backgroundColor:"#FFB319" }} onClick={() => props.deleteItem(ele.id)}>
-          Delete</Button>
+            <Auth capability="delete">
+              <Button style={{ backgroundColor: "#FFB319" }} onClick={() => props.deleteItem(ele.id)}>
+                Delete</Button>
+            </Auth>
           </Card>
         </div>
       );
