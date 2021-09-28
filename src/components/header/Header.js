@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+// import React from 'react';
+
 import { Navbar, Button, Alignment } from "@blueprintjs/core";
 import { Link } from 'react-router-dom';
+import { LoginContext } from '../../context/loginContext';
+import { When } from 'react-if';
 import "./Header.css"
 export default function Header() {
+    const loginContext = useContext(LoginContext)
     return (
         <>
+          <When condition={loginContext.loggedIn}>
         <Navbar className="header" style={{backgroundColor:"#FFB319"}}>
         <Navbar.Group align={Alignment.LEFT}>
             <Navbar.Heading className="title"><h2>To Do</h2></Navbar.Heading>
@@ -15,8 +21,12 @@ export default function Header() {
                     <Link to='/settingsForm'>
                         <Button className='bp3-minimal' icon='settings' text='Settings' />
                     </Link>
+                    <Button onClick={loginContext.logout} className='bp3-minimal' icon={loginContext.loggedin ? 'log-out' : 'log-in'}>
+                            {loginContext.loggedin ? 'Logout' : 'Login'}
+                        </Button>
                 </Navbar.Group>
     </Navbar>
+    </When>
     </>
     );
   }
