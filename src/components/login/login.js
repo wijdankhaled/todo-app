@@ -31,8 +31,9 @@ export default function Login() {
   };
 
   const handleSignupSubmit = (event) => {
-    event.preventDefault();
     context.signup(username, password, firstname, lastname, email, gender, adress, phone,age, role)
+    // event.preventDefault();
+    
   };
 
   return (
