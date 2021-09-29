@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import cookie from 'react-cookies';
 
 export const LoginContext = React.createContext();
-const API = 'https://spacefood.herokuapp.com';
+const API = 'https://mid-project-01.herokuapp.com';
 
 export default function LoginProvider(props) {
 
